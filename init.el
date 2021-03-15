@@ -9,3 +9,7 @@
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
+
+(global-auto-revert-mode t)
+
+(setq make-backup-files nil)

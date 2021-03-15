@@ -1,5 +1,6 @@
 (provide 'init-packages)
 
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -20,19 +21,24 @@
 
 
 (straight-use-package 'general)
+(general-define-key "<escape>" 'keyboard-escape-quit)
 (general-create-definer huyage/leader
   :keymaps '(normal visual emacs)
   :prefix "SPC"
   :global-prefix "SPC")
 
 
-(straight-use-package 'ivy)
+;; Counsel includes ivy and swiper as dependencies.
+(straight-use-package 'counsel)
 (ivy-mode)
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
+(general-define-key "C-s" 'swiper)
+(general-define-key "C-x C-f" 'counsel-find-file)
 
 
 (straight-use-package 'evil)
+(setq evil-want-integration t)
 (setq evil-want-keybinding nil)
 (setq evil-want-C-u-scroll t)
 (evil-mode 1)
@@ -42,13 +48,27 @@
 (evil-collection-init)
 
 
+(straight-use-package 'treemacs)
+(add-hook 'treemacs-mode-hook (lambda () (display-line-numbers-mode 0)))
+
+
+(straight-use-package 'treemacs-evil)
+(require 'treemacs-evil)
+
+
+(straight-use-package 'projectile)
+(projectile-mode +1)
+(huyage/leader
+  "p"  '(projectile-command-map :which-key "projectile"))
+
+
 (straight-use-package 'which-key)
 (setq which-key-idle-delay 1)
 (which-key-mode)
 
 
 (straight-use-package 'vterm)
-(add-hook vterm-mode-hook (lambda () (display-line-numbers-mode 0)))
+(add-hook 'vterm-mode-hook (lambda () (display-line-numbers-mode 0)))
 
 
 (straight-use-package 'doom-themes)
@@ -69,7 +89,27 @@
 
 
 (huyage/leader
-  "t"  '(:ignore t :which-key "Toggle")
-  "tt" '(vterm     :which-key "vterm")
-  "w"  '(:ignore t :which-key "Window")
+  "t"  '(:ignore t          :which-key "Toggle")
+  "tt" '(treemacs           :which-key "treemacs")
+  "tv" '(vterm              :which-key "vterm")
+  "w"  '(:ignore t          :which-key "Window")
   "wr" '(hydra-evil-window-resize/body :which-key "Resize"))
+
+
+(straight-use-package 'lsp-mode)
+(add-hook 'javascript-mode-hook #'lsp)
+
+
+(straight-use-package 'lsp-ui)
+
+
+(straight-use-package 'lsp-ivy)
+
+
+(straight-use-package 'lsp-treemacs)
+(lsp-treemacs-sync-mode 1)
+
+
+(straight-use-package 'lsp-haskell)
+(add-hook 'haskell-mode-hook #'lsp)
+(add-hook 'haskell-literate-mode-hook #'lsp)
