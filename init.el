@@ -12,4 +12,10 @@
 
 (global-auto-revert-mode t)
 
-(setq make-backup-files nil)
+;; Show all whitespace.
+(global-whitespace-mode)
+
+(setq make-backup-files t)
+(setq backup-directory-alist '(("." . "~/.emacs-saves")))
+
+(set-face-attribute 'default nil :font "JetBrains Mono" :height 105)
