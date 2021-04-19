@@ -92,20 +92,21 @@
   ("l" evil-window-increase-width  "Increase width"))
 
 
-;; Rust
-(straight-use-package 'rustic)
-(setq rustic-lsp-server 'rust-analyzer)
-;;(setq rustic-format-on-save t)
-(setq lsp-rust-analyzer-cargo-watch-command "clippy")
-(setq lsp-rust-analyzer-server-display-inlay-hints t)
-
-
 (straight-use-package 'lsp-mode)
 (add-hook 'javascript-mode-hook #'lsp)
 (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
 (setq lsp-eldoc-render-all t)
 (with-eval-after-load 'lsp-mode
   (setq lsp-modeline-diagnostics-scope :workspace))
+
+
+;; Rust
+(straight-use-package 'rustic)
+(setq rustic-lsp-server 'rust-analyzer)
+(setq rustic-format-on-save t)
+(setq lsp-rust-server 'rust-analyzer)
+(setq lsp-rust-analyzer-cargo-watch-command "clippy")
+(setq lsp-rust-analyzer-server-display-inlay-hints t)
 
 
 (straight-use-package 'lsp-ui)
@@ -126,6 +127,11 @@
 
 (straight-use-package 'flycheck)
 (global-flycheck-mode)
+
+
+(straight-use-package 'exec-path-from-shell)
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
 
 (huyage/leader
