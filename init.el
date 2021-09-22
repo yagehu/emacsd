@@ -2,6 +2,9 @@
 
 (require 'init-packages)
 
+(custom-set-variables
+ '(initial-frame-alist (quote ((fullscreen . maximized)))))
+
 (tooltip-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -12,7 +15,7 @@
 
 (global-auto-revert-mode t)
 
-;; Show all whitespace.
+(setq whitespace-style '(trailing space-before-tab indentation space-after-tab))
 (global-whitespace-mode)
 
 (setq make-backup-files t)

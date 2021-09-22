@@ -12,9 +12,7 @@
   (load bootstrap-file nil 'nomessage))
 
 
-;; Standard ML
-;;(straight-use-package 'sml-mode)
-;;(add-to-list 'auto-mode-alist '("\\.\\(sml\\|sig\\)\\'" . sml-mode))
+(straight-use-package 'proof-general)
 
 
 (straight-use-package 'general)
@@ -53,7 +51,7 @@
 
 
 (straight-use-package 'treemacs)
-;;(add-hook 'treemacs-mode-hook (lambda () (display-line-numbers-mode 0)))
+(add-hook 'treemacs-mode-hook (lambda () (display-line-numbers-mode 0)))
 
 
 (straight-use-package 'treemacs-evil)
@@ -132,6 +130,13 @@
 (straight-use-package 'exec-path-from-shell)
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
+
+
+(setq org-roam-v2-ack t)
+(straight-use-package 'org-roam)
+(setq org-roam-directory (file-truename "~/org"))
+(org-roam-db-autosync-mode)
+(add-hook 'org-mode-hook #'auto-fill-mode)
 
 
 (huyage/leader

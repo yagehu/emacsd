@@ -10,3 +10,8 @@ recentf
 url
 
 /session.*
+
+# org-roam
+.org-id-locations
+bookmarks
+org-roam.db
