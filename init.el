@@ -15,7 +15,16 @@
 
 (global-auto-revert-mode t)
 
-(setq whitespace-style '(trailing space-before-tab indentation space-after-tab))
+(setq whitespace-style '(face
+                         trailing
+                         tabs
+                         spaces
+                         empty
+                         indentation
+                         space-after-tab
+                         space-before-tab
+                         space-mark
+                         tab-mark))
 (global-whitespace-mode)
 
 (setq make-backup-files t)

@@ -118,9 +118,9 @@
 (lsp-treemacs-sync-mode 1)
 
 
-;;(straight-use-package 'lsp-haskell)
-;;(add-hook 'haskell-mode-hook #'lsp)
-;;(add-hook 'haskell-literate-mode-hook #'lsp)
+(straight-use-package 'lsp-haskell)
+(add-hook 'haskell-mode-hook #'lsp)
+(add-hook 'haskell-literate-mode-hook #'lsp)
 
 
 (straight-use-package 'flycheck)
