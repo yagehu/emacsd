@@ -140,6 +140,10 @@
 (setq org-roam-directory (file-truename "~/org"))
 (org-roam-db-autosync-mode)
 (add-hook 'org-mode-hook #'auto-fill-mode)
+(setq
+  org-edit-src-content-indentation 0
+  org-src-tab-acts-natively t
+  org-src-preserve-indentation t)
 
 
 (huyage/leader
