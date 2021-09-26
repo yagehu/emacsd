@@ -118,6 +118,9 @@
 (lsp-treemacs-sync-mode 1)
 
 
+(straight-use-package 'haskell-mode)
+
+
 (straight-use-package 'lsp-haskell)
 (add-hook 'haskell-mode-hook #'lsp)
 (add-hook 'haskell-literate-mode-hook #'lsp)
@@ -141,6 +144,8 @@
 
 (huyage/leader
   "l"  '(:keymap lsp-command-map :which-key "lsp")
+  "o"  '(:ignore t          :which-key "org-roam")
+  "of" '(org-roam-node-find :which-key "Find node")
   "t"  '(:ignore t          :which-key "Toggle")
   "tt" '(treemacs           :which-key "treemacs")
   "tv" '(vterm              :which-key "vterm")
