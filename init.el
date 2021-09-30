@@ -30,4 +30,4 @@
 (setq make-backup-files t)
 (setq backup-directory-alist '(("." . "~/.emacs-saves")))
 
-(set-face-attribute 'default nil :font "JetBrains Mono" :height 105)
+(set-face-attribute 'default nil :font "JetBrains Mono" :height 120)

@@ -25,6 +25,7 @@
 
 (straight-use-package 'counsel)
 (ivy-mode)
+(setq ivy-use-selectable-prompt t)
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
 (general-define-key "C-s" 'swiper)
