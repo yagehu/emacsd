@@ -99,6 +99,12 @@
   (setq lsp-modeline-diagnostics-scope :workspace))
 
 
+;; YAML
+(straight-use-package 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+(add-hook 'yaml-mode-hook #'lsp)
+
+
 ;; Rust
 (straight-use-package 'rustic)
 (setq rustic-lsp-server 'rust-analyzer)
