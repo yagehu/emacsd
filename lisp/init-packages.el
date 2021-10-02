@@ -102,6 +102,7 @@
 ;; YAML
 (straight-use-package 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+(setq lsp-yaml-schema-store-uri "https://www.schemastore.org/api/json/catalog.json")
 (add-hook 'yaml-mode-hook #'lsp)
 
 
@@ -144,6 +145,7 @@
 (setq org-roam-directory (file-truename "~/org"))
 (org-roam-db-autosync-mode)
 (add-hook 'org-mode-hook #'auto-fill-mode)
+(add-hook 'org-mode-hook #'visual-line-mode)
 (setq
   org-edit-src-content-indentation 0
   org-src-tab-acts-natively t
