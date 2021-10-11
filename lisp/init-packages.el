@@ -152,6 +152,10 @@
   org-src-preserve-indentation t)
 
 
+(straight-use-package 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+
 (huyage/leader
   "l"  '(:keymap lsp-command-map :which-key "lsp")
   "o"  '(:ignore t          :which-key "org-roam")
