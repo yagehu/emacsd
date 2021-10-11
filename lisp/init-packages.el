@@ -83,6 +83,12 @@
 
 
 (straight-use-package 'hydra)
+(defhydra hydra-text-scale (:timeout 4)
+  "Text Scale"
+  ("k" text-scale-increase "Up")
+  ("j" text-scale-decrease "Down")
+  ("r" (text-scale-set 0) "Reset")
+  ("0" (text-scale-set 0) :bind nil :exit t))
 (defhydra hydra-evil-window-resize (:timeout 4)
   "Resize window"
   ("h" evil-window-decrease-width  "Decrease width")
@@ -158,12 +164,13 @@
 
 (huyage/leader
   "l"  '(:keymap lsp-command-map :which-key "lsp")
-  "o"  '(:ignore t          :which-key "org-roam")
-  "of" '(org-roam-node-find :which-key "Find node")
-  "t"  '(:ignore t          :which-key "Toggle")
-  "tt" '(treemacs           :which-key "treemacs")
-  "tv" '(vterm              :which-key "vterm")
-  "w"  '(:ignore t          :which-key "Window")
+  "o"  '(:ignore t             :which-key "org-roam")
+  "of" '(org-roam-node-find    :which-key "Find node")
+  "t"  '(:ignore t             :which-key "Toggle")
+  "ts" '(hydra-text-scale/body :which-key "Text scale")
+  "tt" '(treemacs              :which-key "treemacs")
+  "tv" '(vterm                 :which-key "vterm")
+  "w"  '(:ignore t             :which-key "Window")
   "wr" '(hydra-evil-window-resize/body :which-key "Resize"))
 
 
