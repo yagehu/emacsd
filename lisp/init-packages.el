@@ -146,9 +146,10 @@
   (exec-path-from-shell-initialize))
 
 
+(setq org-ellipsis "⤵")
 (setq org-roam-v2-ack t)
 (straight-use-package 'org-roam)
-(setq org-roam-directory (file-truename "~/org"))
+(setq org-roam-directory (file-truename "~/sync/org"))
 (org-roam-db-autosync-mode)
 (add-hook 'org-mode-hook #'auto-fill-mode)
 (add-hook 'org-mode-hook #'visual-line-mode)
