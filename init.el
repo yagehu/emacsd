@@ -1,6 +1,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 (require 'init-packages)
+(require 'ghcid)
 
 (custom-set-variables
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
