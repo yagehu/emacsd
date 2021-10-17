@@ -12,6 +12,10 @@
   (load bootstrap-file nil 'nomessage))
 
 
+(straight-use-package 'smooth-scrolling)
+(smooth-scrolling-mode 1)
+
+
 (straight-use-package 'proof-general)
 
 
