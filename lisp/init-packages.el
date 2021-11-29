@@ -75,6 +75,7 @@
 
 
 (straight-use-package 'vterm)
+(setq-default vterm-shell "/usr/bin/zsh")
 (add-hook 'vterm-mode-hook (lambda () (display-line-numbers-mode 0)))
 
 
@@ -118,10 +119,10 @@
 
 ;; Rust
 (straight-use-package 'rustic)
-(setq rustic-lsp-server 'rust-analyzer)
 (setq rustic-format-on-save t)
-(setq lsp-rust-server 'rust-analyzer)
+(setq rustic-rustfmt-args "+nightly")
 (setq lsp-rust-analyzer-cargo-watch-command "clippy")
+(setq lsp-rust-analyzer-display-chaining-hints t)
 (setq lsp-rust-analyzer-server-display-inlay-hints t)
 
 

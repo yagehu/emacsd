@@ -31,7 +31,7 @@
 (setq make-backup-files t)
 (setq backup-directory-alist '(("." . "~/.emacs-saves")))
 
-(set-face-attribute 'default nil :font "JetBrains Mono" :height 120)
+(set-face-attribute 'default nil :font "JetBrains Mono" :height 105)
 
 (setq-default display-fill-column-indicator-column 79)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
