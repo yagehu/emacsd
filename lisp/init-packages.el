@@ -1,6 +1,8 @@
 (defvar bootstrap-version)
 (let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        user-emacs-directory))
       (bootstrap-version 5))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
@@ -10,6 +12,7 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+(setq package-enable-at-startup nil)
 
 
 (straight-use-package 'smooth-scrolling)
@@ -21,14 +24,14 @@
 
 (straight-use-package 'general)
 (general-define-key "<escape>" 'keyboard-escape-quit)
-(general-create-definer huyage/leader
+(general-create-definer custom/leader
   :keymaps '(normal visual emacs)
   :prefix "SPC"
   :global-prefix "SPC")
 
 
 (straight-use-package 'counsel)
-(ivy-mode)
+(counsel-mode)
 (setq ivy-use-selectable-prompt t)
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
@@ -65,8 +68,8 @@
 
 (straight-use-package 'projectile)
 (projectile-mode +1)
-(huyage/leader
-  "p"  '(projectile-command-map :which-key "projectile"))
+(custom/leader
+  "p" '(projectile-command-map :which-key "projectile"))
 
 
 (straight-use-package 'which-key)
@@ -110,6 +113,10 @@
   (setq lsp-modeline-diagnostics-scope :workspace))
 
 
+;; JavaScript/TypeScript
+(straight-use-package 'typescript-mode)
+(add-hook 'typescript-mode-hook #'lsp)
+
 ;; YAML
 (straight-use-package 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
@@ -119,11 +126,13 @@
 
 ;; Rust
 (straight-use-package 'rustic)
+(setq rustic-format-display-method 'ignore)
 (setq rustic-format-on-save t)
 (setq rustic-rustfmt-args "+nightly")
 (setq lsp-rust-analyzer-cargo-watch-command "clippy")
-(setq lsp-rust-analyzer-display-chaining-hints t)
+(setq lsp-rust-analyzer-display-chaining-hints nil)
 (setq lsp-rust-analyzer-server-display-inlay-hints t)
+(setq lsp-rust-analyzer-proc-macro-enable t)
 
 
 (straight-use-package 'lsp-ui)
@@ -168,15 +177,14 @@
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 
-(huyage/leader
-  "l"  '(:keymap lsp-command-map :which-key "lsp")
-  "o"  '(:ignore t             :which-key "org-roam")
-  "of" '(org-roam-node-find    :which-key "Find node")
-  "t"  '(:ignore t             :which-key "Toggle")
-  "ts" '(hydra-text-scale/body :which-key "Text scale")
-  "tt" '(treemacs              :which-key "treemacs")
-  "tv" '(vterm                 :which-key "vterm")
-  "w"  '(:ignore t             :which-key "Window")
+(custom/leader
+  "o"  '(:ignore t                     :which-key "org-roam")
+  "of" '(org-roam-node-find            :which-key "Find node")
+  "t"  '(:ignore t                     :which-key "Toggle")
+  "ts" '(hydra-text-scale/body         :which-key "Text scale")
+  "tt" '(treemacs                      :which-key "treemacs")
+  "tv" '(vterm                         :which-key "vterm")
+  "w"  '(:ignore t                     :which-key "Window")
   "wr" '(hydra-evil-window-resize/body :which-key "Resize"))
 
 
