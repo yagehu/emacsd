@@ -66,6 +66,9 @@
 (require 'treemacs-evil)
 
 
+(straight-use-package 'magit)
+
+
 (straight-use-package 'projectile)
 (projectile-mode +1)
 (custom/leader
@@ -105,6 +108,12 @@
   ("l" evil-window-increase-width  "Increase width"))
 
 
+(straight-use-package 'fzf)
+(custom/leader
+  "z"  '(:ignore t      :which-key "Fzf")
+  "zp" '(fzf-projectile :which-key "Projectile"))
+
+
 (straight-use-package 'lsp-mode)
 (add-hook 'javascript-mode-hook #'lsp)
 (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
@@ -121,6 +130,8 @@
 (straight-use-package 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 (setq lsp-yaml-schema-store-uri "https://www.schemastore.org/api/json/catalog.json")
+(setq lsp-yaml-schemas
+      '(:github-workflow ".github/workflows/**.yaml"))
 (add-hook 'yaml-mode-hook #'lsp)
 
 
