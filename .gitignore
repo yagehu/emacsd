@@ -1,7 +1,9 @@
 .cache
+.log
 .lsp-*
 auto-save-list
 straight
+transient
 *~
 \#*#
 .\#*
