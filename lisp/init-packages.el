@@ -139,6 +139,7 @@
 (straight-use-package 'rustic)
 (setq rustic-format-display-method 'ignore)
 (setq rustic-format-on-save t)
+(setq rustic-lsp-server 'rust-analyzer)
 (setq rustic-rustfmt-args "+nightly")
 (setq lsp-rust-analyzer-cargo-watch-command "clippy")
 (setq lsp-rust-analyzer-display-chaining-hints nil)
